@@ -1,19 +1,14 @@
+import React from 'react'
+import NavigationComponent from './components/navigation/navigation-container'
+import routes from './components/navigation/routes'
+import { useRoutes } from 'hookrouter'
+
 function App() {
+  const routeResult = useRoutes(routes)
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavigationComponent />
+      {routeResult}
     </div>
   )
 }

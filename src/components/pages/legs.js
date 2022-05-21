@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { navigate } from 'hookrouter'
 
 export default class Legs extends Component {
   render() {

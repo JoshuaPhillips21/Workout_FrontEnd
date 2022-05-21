@@ -1,8 +1,7 @@
 import React from 'react'
 import { A } from 'hookrouter'
-import { withRouter } from 'react-router'
 
-const NavigationComponent = (props) => {
+const NavigationComponent = () => {
   return (
     <div className="nav-wrapper">
       <div className="left-side">
@@ -28,4 +27,4 @@ const NavigationComponent = (props) => {
   )
 }
 
-export default withRouter(NavigationComponent)
+export default NavigationComponent
