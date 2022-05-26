@@ -1,0 +1,14 @@
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  background-color: #d3af37;
+  width: 100vw;
+
+  .nav-link-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
