@@ -1,7 +1,23 @@
-import React, { Component } from 'react'
+import React, { useState } from "react";
+import NewWorkout from "../forms/new-workout";
 
-export default class Arms extends Component {
-  render() {
-    return <div className="arms">This is the arms page</div>
-  }
+function Arms() {
+  const [openModal, setOpenModal] = useState(false);
+
+  return (
+    <div className="arms">
+      <button
+        className="openModal"
+        onClick={() => {
+          setOpenModal(true);
+        }}
+      >
+        Add Workout
+      </button>
+      {openModal && <NewWorkout closeModal={setOpenModal} />}
+      This is the arms page
+    </div>
+  );
 }
+
+export default Arms;
