@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NewWorkout from "../forms/new-workout";
+import NewWorkout from "../Modals/new-workout";
 
 function Arms() {
   const [openModal, setOpenModal] = useState(false);
