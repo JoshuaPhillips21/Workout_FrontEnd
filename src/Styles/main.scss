@@ -3,5 +3,9 @@
   padding: 0;
 }
 
+@import "./mixins.scss";
 @import "./home.scss";
-@import "nav-container.scss";
+@import "./nav-container.scss";
+@import "./signUp-form.scss";
+@import "./grids.scss";
+@import "./button.scss";

@@ -27,11 +27,14 @@ export default class SignUpModal extends Component {
       this.handleSuccessfulFormSumbmisson.bind(this);
   }
 
-  handleSuccessfulFormSumbmisson(signUp) {}
+  handleSuccessfulFormSumbmisson(signUp) {
+    this.props.handleSuccessfulNewSignUp(signUp);
+  }
 
   render() {
     return (
       <ReactModal
+        handleSuccessfulNewSignUp={this.handleSuccessfulFormSumbmisson}
         style={this.custonStyles}
         onRequestClose={() => {
           this.props.handleModalClose();

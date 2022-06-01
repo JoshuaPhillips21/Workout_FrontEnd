@@ -17,8 +17,8 @@ export default class SignUpForm extends Component {
   buildForm() {
     let formData = new FormData();
 
-    formData.append("user[username]", this.state.username);
-    formData.append("user[password]", this.state.password);
+    formData.append("user[user.username]", this.state.username);
+    formData.append("user[user.password]", this.state.password);
 
     return formData;
   }
@@ -30,6 +30,10 @@ export default class SignUpForm extends Component {
       })
       .then((response) => {
         this.props.handleSuccessfulFormSubmission(response.data);
+        this.setState({
+          username: "",
+          password: "",
+        });
       })
       .catch((error) => {
         console.log("handleSubmit for sign up", error);
@@ -46,23 +50,25 @@ export default class SignUpForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          name="username"
-          placeholder="Username"
-          value={this.state.username}
-        />
-        <input
-          type="text"
-          onChange={this.handleChange}
-          name="password"
-          placeholder="Password"
-          value={this.state.password}
-        />
+      <form onSubmit={this.handleSubmit} className="signUp-form-wrapper">
+        <div className="tww-columns">
+          <input
+            type="text"
+            onChange={this.handleChange}
+            name="username"
+            placeholder="Username"
+            value={this.state.username}
+          />
+          <input
+            type="text"
+            onChange={this.handleChange}
+            name="password"
+            placeholder="Password"
+            value={this.state.password}
+          />
+        </div>
 
-        <button>Sign up</button>
+        <button className="btn">Sign up</button>
       </form>
     );
   }

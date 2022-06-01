@@ -11,6 +11,13 @@ export default class Home extends Component {
 
     this.handleNewSignUpClick = this.handleNewSignUpClick.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
+    this.handleSuccessfulNewSignUp = this.handleSuccessfulNewSignUp.bind(this);
+  }
+
+  handleSuccessfulNewSignUp(singUp) {
+    this.setState({
+      signUpModalIsOpen: false,
+    });
   }
 
   handleModalClose() {
