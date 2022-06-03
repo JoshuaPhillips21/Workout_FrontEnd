@@ -1,24 +1,30 @@
 import React, { useState } from "react";
-import axios from "axios";
 
-export default function SignUpForm(props) {
+export default function SignUp(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    axios
-      .post("http://127.0.0.1:5000/user/add", {
-        username: username,
-        password: password,
-      })
-      .then((response) => {
-        props.handleSuccessfulFormSumbmisson(response.data);
-      })
-      .catch((error) => {
-        console.log("handleSubmit for sign up", error);
-      });
-
     e.preventDefault();
+
+    fetch("http://127.0.0.1:5000/user/add", {
+      method: "POST",
+      header: {
+        "content-type": "application/json",
+      },
+
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((res) => res.text())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log("error creating account", err);
+      });
   };
 
   return (

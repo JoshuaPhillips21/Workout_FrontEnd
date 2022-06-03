@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
 
-import SignUpForm from "../forms/sign-up-form";
+import Login from "../auth/login";
 
 ReactModal.setAppElement("#root");
 
-export default class SignUpModal extends Component {
+export default class LoginModal extends Component {
   constructor(props) {
     super(props);
 
@@ -27,8 +27,9 @@ export default class SignUpModal extends Component {
       this.handleSuccessfulFormSumbmisson.bind(this);
   }
 
-  handleSuccessfulFormSumbmisson(signUp) {
-    this.props.handleSuccessfulNewSignUp(signUp);
+  handleSuccessfulFormSumbmisson(login) {
+    this.props.handleSuccessfulLogin(login);
+    console.log("submitted");
   }
 
   render() {
@@ -41,7 +42,7 @@ export default class SignUpModal extends Component {
         }}
         isOpen={this.props.modalIsOpen}
       >
-        <SignUpForm
+        <Login
           handleSuccessfulFormSumbmisson={this.handleSuccessfulFormSumbmisson}
         />
       </ReactModal>
