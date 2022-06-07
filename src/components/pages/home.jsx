@@ -1,85 +1,90 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import SignUpModal from "../Modals/sign-up-modal";
 import LoginModal from "../Modals/login-modal";
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+import { useAppContext } from "../../context";
 
-    this.state = {
-      signUpModalIsOpen: false,
-      loginModalIsOpen: false,
-    };
+export default function Home() {
+  const [loginModalIsOpen, setLoginModalIsOpen] = useState(false);
+  const [signUpModalIsOpen, setSignUpModalIsOpen] = useState(false);
+  const { setLoggedIn, loggedIn, logout, currentUser } = useAppContext();
 
-    this.handleNewSignUpClick = this.handleNewSignUpClick.bind(this);
-    this.handleSignUpModalClose = this.handleSignUpModalClose.bind(this);
-    this.handleSuccessfulNewSignUp = this.handleSuccessfulNewSignUp.bind(this);
-    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLoginModalClose = this.handleLoginModalClose.bind(this);
-  }
+  const handleSuccessfulLogin = () => {
+    setLoggedIn(true);
+    setLoginModalIsOpen(false);
+  };
 
-  handleSuccessfulLogin() {
-    this.setState({
-      loginModalIsOpen: false,
-    });
-  }
+  const handleLoginModalClose = () => {
+    setLoginModalIsOpen(false);
+  };
 
-  handleLoginModalClose() {
-    this.setState({
-      loginModalIsOpen: false,
-    });
-  }
+  const handleLogin = () => {
+    setLoginModalIsOpen(true);
+  };
 
-  handleLogin() {
-    this.setState({
-      loginModalIsOpen: true,
-    });
-  }
+  const handleSuccessfulNewSignUp = () => {
+    setSignUpModalIsOpen(false);
+  };
 
-  handleSuccessfulNewSignUp() {
-    this.setState({
-      signUpModalIsOpen: false,
-    });
-  }
+  const handleSignUpModalClose = () => {
+    setSignUpModalIsOpen(false);
+  };
 
-  handleSignUpModalClose() {
-    this.setState({
-      signUpModalIsOpen: false,
-    });
-  }
+  const handleNewSignUpClick = () => {
+    setSignUpModalIsOpen(true);
+  };
 
-  handleNewSignUpClick() {
-    this.setState({
-      signUpModalIsOpen: true,
-    });
-  }
+  const handleLogOut = () => {
+    setLoggedIn(false);
+    logout();
+    console.log("logged out");
+  };
 
-  render() {
-    return (
-      <div className="home-page">
-        <div className="title home">
-          <h1>Home</h1>
-          <div className="btn-wrapper">
-            <SignUpModal
-              handleModalClose={this.handleSignUpModalClose}
-              modalIsOpen={this.state.signUpModalIsOpen}
-              handleSuccessfulNewSignUp={this.handleSuccessfulNewSignUp}
-            />
+  useEffect(() => {
+    console.log(currentUser);
+    if (Cookies.get("username")) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, [loggedIn]);
 
-            <button className="btn" onClick={this.handleNewSignUpClick}>
-              Sign Up
-            </button>
-            <LoginModal
-              handleModalClose={this.handleLoginModalClose}
-              modalIsOpen={this.state.loginModalIsOpen}
-              handleSuccessfulLogin={this.handleSuccessfulLogin}
-            />
-            <button className="btn" onClick={this.handleLogin}>
-              Log In
-            </button>
-          </div>
+  return (
+    <div className="home-page">
+      <div className="title home">
+        <h1>Home</h1>
+        <div
+          className="btn-wrapper"
+          style={{ visibility: loggedIn ? "hidden" : "visible" }}
+        >
+          <SignUpModal
+            handleModalClose={handleSignUpModalClose}
+            modalIsOpen={signUpModalIsOpen}
+            handleSuccessfulNewSignUp={handleSuccessfulNewSignUp}
+          />
+
+          <button className="btn" onClick={handleNewSignUpClick}>
+            Sign Up
+          </button>
+          <LoginModal
+            handleModalClose={handleLoginModalClose}
+            modalIsOpen={loginModalIsOpen}
+            handleSuccessfulLogin={handleSuccessfulLogin}
+          />
+          <button className="btn" onClick={handleLogin}>
+            Log In
+          </button>
+        </div>
+        <div className="btn-wrapper">
+          <button
+            className="btn"
+            style={{ visibility: loggedIn ? "visible" : "hidden" }}
+            onClick={handleLogOut}
+          >
+            Log Out
+          </button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }

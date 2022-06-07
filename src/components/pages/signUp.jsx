@@ -9,7 +9,7 @@ export default function SignUp(props) {
 
     fetch("http://127.0.0.1:5000/user/add", {
       method: "POST",
-      header: {
+      headers: {
         "content-type": "application/json",
       },
 

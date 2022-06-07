@@ -1,28 +1,50 @@
-import React from "react";
+import React, { Component } from "react";
+import ReactModal from "react-modal";
 
-function NewWorkout({ closeModal }) {
-  return (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="close-button">
-          <button onClick={() => closeModal(false)}>X</button>
-        </div>
-        <div className="title">
-          <h1>New Workout</h1>
-        </div>
-        <div className="body">
-          <input type="text" placeholder="title" name="title" />
-          <input type="text" placeholder="weight" name="weight" />
-          <input type="text" placeholder="reps" name="reps" />
-          <input type="text" placeholder="muscle" name="muscle" />
-        </div>
-        <div className="modal-buttons">
-          <button type="submit" onClick={() => closeModal(false)}>
-            Add Workout
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+import NewWorkoutForm from "../forms/new-workout-form";
+
+ReactModal.setAppElement("#root");
+
+export default class NewWorkoutModal extends Component {
+  constructor(props) {
+    super(props);
+
+    this.customStyles = {
+      content: {
+        top: "50%",
+        left: "50%",
+        right: "auto",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)",
+        width: "800px",
+      },
+      overlay: {
+        backgroundColor: "rgba(1,1,1,075)",
+      },
+    };
+
+    this.handleSuccessfulFormSubmission =
+      this.handleSuccessfulFormSubmission.bind(this);
+  }
+
+  handleSuccessfulFormSubmission(newWorkout) {
+    this.props.handleSuccessfulNewWorkout(newWorkout);
+  }
+
+  render() {
+    return (
+      <ReactModal
+        handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+        style={this.customStyles}
+        onRequestClose={() => {
+          this.props.handleWorkoutModalClose();
+        }}
+        isOpen={this.props.workoutModalIsOpen}
+      >
+        <NewWorkoutForm
+          handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+        />
+      </ReactModal>
+    );
+  }
 }
-export default NewWorkout;

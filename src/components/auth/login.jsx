@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "hookrouter";
 import Cookies from "js-cookie";
+import { useAppContext } from "../../context";
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMesssage] = useState("");
+  const { login } = useAppContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,13 +19,13 @@ export default function Login(props) {
     } else {
       fetch("http://127.0.0.1:5000/user/authenticate", {
         method: "POST",
-        header: {
-          "content-type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
         },
 
         body: JSON.stringify({
-          username,
-          password,
+          username: username,
+          password: password,
         }),
       })
         .then((res) => res.json())
@@ -35,14 +37,17 @@ export default function Login(props) {
             setError(false);
             setErrorMesssage("");
             Cookies.set("username", username);
+            window.localStorage.setItem("user", JSON.stringify(res.id));
             navigate("/");
             props.handleSuccessfulFormSumbmisson();
           }
         })
+        .then(() => {
+          login();
+        })
         .catch((error) => {
           setError(true);
           setErrorMesssage("Error with logging in, please try again", error);
-          console.log("Error with logging in, please try again", error);
         });
     }
   };
