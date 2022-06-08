@@ -21,7 +21,7 @@ export default class Legs extends Component {
 
   handleRenderLegWorkouts() {
     axios
-      .get("http://127.0.0.1:5000/workout")
+      .get("https://dost-thou-even-hoist-api.herokuapp.com/workout")
       .then((res) => {
         this.setState({
           legWorkouts: res.data.filter((workout) => {

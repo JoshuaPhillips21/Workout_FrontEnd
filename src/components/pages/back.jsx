@@ -21,7 +21,7 @@ export default class Back extends Component {
 
   handleRenderBackWorkouts() {
     axios
-      .get("http://127.0.0.1:5000/workout")
+      .get("https://dost-thou-even-hoist-api.herokuapp.com/workout")
       .then((res) => {
         this.setState({
           backWorkouts: res.data.filter((workout) => {

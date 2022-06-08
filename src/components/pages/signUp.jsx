@@ -7,7 +7,7 @@ export default function SignUp(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch("http://127.0.0.1:5000/user/add", {
+    fetch("https://dost-thou-even-hoist-api.herokuapp.com/user/add", {
       method: "POST",
       headers: {
         "content-type": "application/json",

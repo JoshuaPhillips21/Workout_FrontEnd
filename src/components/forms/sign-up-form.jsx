@@ -7,7 +7,7 @@ export default function SignUpForm(props) {
 
   const handleSubmit = (e) => {
     axios
-      .post("http://127.0.0.1:5000/user/add", {
+      .post("https://dost-thou-even-hoist-api.herokuapp.com/user/add", {
         username: username,
         password: password,
       })

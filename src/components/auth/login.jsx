@@ -17,7 +17,7 @@ export default function Login(props) {
       setError(true);
       setErrorMesssage("Error: All fields must be completed.");
     } else {
-      fetch("http://127.0.0.1:5000/user/authenticate", {
+      fetch("https://dost-thou-even-hoist-api.herokuapp.com/authenticate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

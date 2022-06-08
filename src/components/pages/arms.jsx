@@ -21,7 +21,7 @@ export default class Arms extends Component {
 
   handleRenderArmWorkouts() {
     axios
-      .get("http://127.0.0.1:5000/workout")
+      .get("https://dost-thou-even-hoist-api.herokuapp.com/workout")
       .then((res) => {
         this.setState({
           armWorkouts: res.data.filter((workout) => {

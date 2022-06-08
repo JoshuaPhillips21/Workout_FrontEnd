@@ -19,7 +19,7 @@ export default function NewWorkoutForm(props) {
       setError(true);
       setErrorMesssage("Error: All fields must be completed.");
     } else {
-      fetch("http://127.0.0.1:5000/workout/add", {
+      fetch("https://dost-thou-even-hoist-api.herokuapp.com/workout/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
