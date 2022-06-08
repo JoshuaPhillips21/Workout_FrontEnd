@@ -6,6 +6,13 @@
 .two-columns {
   @include base-grid();
   grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-self: center;
+    align-items: center;
+  }
 }
 
 .three-columns {

@@ -1,0 +1,34 @@
+.profile-page {
+  margin: 0px;
+  padding: 0px;
+  background-image: url(../components/images/Arc-Reactor.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: contain;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  h1 {
+    color: #bd1816;
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    background-color: #bd1816;
+    border: none;
+    color: #d3af37;
+    padding: 5px 32px;
+    margin: 0px 15px 0px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2rem;
+  }
+}

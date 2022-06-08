@@ -8,11 +8,6 @@ export default function BackWorkouts(props) {
       <h3>{workout.weight}</h3>
       <h3>{workout.reps}</h3>
       <h3>{workout.muscle}</h3>
-
-      <div className="btn-container">
-        <button className="btn">Edit</button>
-        <button className="btn">Delete</button>
-      </div>
     </div>
   );
 }

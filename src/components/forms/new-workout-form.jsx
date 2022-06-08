@@ -10,6 +10,8 @@ export default function NewWorkoutForm(props) {
   const [errorMessage, setErrorMesssage] = useState("");
   const { currentUser } = useAppContext();
 
+  // const renderArmWorkouts = () => {};
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

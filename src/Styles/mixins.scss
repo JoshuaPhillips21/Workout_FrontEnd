@@ -42,14 +42,24 @@
 @mixin base-grid() {
   display: grid;
   grid-gap: 21px;
+
+  @media (max-width: 48em) {
+    width: 50vw;
+    height: 50vh;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    align-self: center;
+  }
 }
 
 @mixin background() {
   background-image: url(../components/images/iron-man-armor-artwork-marvel-comics-1920x1080-38490.jpg);
+  min-height: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
   background-color: black;
 }
 
@@ -61,4 +71,11 @@
   border-radius: 8px;
   border: 2px solid #bd1816;
   padding: 0px 25px 10px 25px;
+
+  @media (max-width: 48em) {
+    width: 50vw;
+    height: 50vh;
+    grid-template-rows: 1fr;
+    grid-gap: 25px;
+  }
 }
