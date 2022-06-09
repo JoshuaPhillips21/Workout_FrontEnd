@@ -1,5 +1,6 @@
 @mixin base-btn {
   cursor: pointer;
+  font-family: "Stark", sans-serif;
   height: 42px;
   font-size: 1em;
   font-weight: 500;
@@ -20,7 +21,7 @@
 
 @mixin input-element {
   input {
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Stark", sans-serif;
     color: black;
     padding: 5px 0px 0px 0px;
     width: 100%;
@@ -65,6 +66,7 @@
 
 @mixin workout() {
   display: grid;
+  font-family: "Stark", sans-serif;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   margin: 20px;
   background-color: #d3af37;
