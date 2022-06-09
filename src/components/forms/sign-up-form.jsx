@@ -32,7 +32,7 @@ export default function SignUpForm(props) {
           value={username}
         />
         <input
-          type="text"
+          type="password"
           onChange={(e) => setPassword(e.target.value)}
           name="password"
           placeholder="Password"

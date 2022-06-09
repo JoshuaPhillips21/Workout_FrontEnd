@@ -1,12 +1,14 @@
 import React from "react";
 import { A } from "hookrouter";
 import { useAppContext } from "../../context";
+import { IoIosArrowDropdown } from "react-icons/io";
 
-const NavigationComponent = () => {
+const NavigationComponent = ({ toggle }) => {
   const { loggedIn } = useAppContext();
 
   return (
     <div className="nav-wrapper">
+      <IoIosArrowDropdown className="mobile-icon" onClick={toggle} />
       <div className="nav-link-wrapper">
         <A className="link" href="/">
           Home

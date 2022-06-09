@@ -3,19 +3,12 @@
   justify-items: center;
   align-items: center;
 
-  // @media (max-width: 500px) {
-  //   width: 100vw;
-  //   align-items: center;
-  //   justify-items: center;
-  //   margin: 0px 0px 0px 0px;
-  // }
-  // .login-form-wrapper {
-  //   @include base-grid();
-  //   grid-template-columns: 1fr;
-
+  .login-form-wrapper {
+    display: grid;
+    justify-items: center;
+  }
   @include input-element();
   input {
     margin-bottom: 0px;
   }
-  // }
 }

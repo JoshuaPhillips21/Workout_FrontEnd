@@ -16,7 +16,7 @@ export default class SignUpModal extends Component {
         right: "auto",
         marginRight: "-50%",
         transform: "translate(-50%, -50%)",
-        width: "800px",
+        width: "80vw",
       },
       overlay: {
         backgroundColor: "rgba(1,1,1,075)",

@@ -5,10 +5,10 @@ export default function ArmWorkouts(props) {
 
   return (
     <div className="arm-workout">
-      <h1>{workout.title}</h1>
-      <h3>{workout.weight}</h3>
-      <h3>{workout.reps}</h3>
-      <h3>{workout.muscle}</h3>
+      <h3>Title: {workout.title}</h3>
+      <h3>Weight: {workout.weight}</h3>
+      <h3>Reps: {workout.reps}</h3>
+      <h3>Muscle: {workout.muscle}</h3>
     </div>
   );
 }
