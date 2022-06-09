@@ -17,17 +17,20 @@ export default function Login(props) {
       setError(true);
       setErrorMesssage("Error: All fields must be completed.");
     } else {
-      fetch("https://dost-thou-even-hoist-api.herokuapp.com/authenticate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      fetch(
+        "https://dost-thou-even-hoist-api.herokuapp.com/user/authenticate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
 
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      })
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        }
+      )
         .then((res) => res.json())
         .then((res) => {
           if (res === "User NOT verified") {
