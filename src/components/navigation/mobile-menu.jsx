@@ -10,7 +10,7 @@ export const Mobilemenu = ({ isOpen, toggle }) => {
       className="mobile-link-wrapper"
       onClick={toggle}
       isOpen={isOpen}
-      style={{ top: isOpen ? "0" : "-100%" }}
+      style={{ display: isOpen ? "block" : "none" }}
     >
       <div className="closeIcon" onClick={toggle}>
         <FaTimes style={{ color: "#d3af37", fontSize: "2em" }} />
