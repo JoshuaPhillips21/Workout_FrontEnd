@@ -13,7 +13,7 @@ export default function Workouts(props) {
 
   const handleDeleteClick = (id) => {
     axios
-      .delete(`http://127.0.0.1:5000/workout/delete/${id}`)
+      .delete(`https://dost-thou-even-hoist.herokuapp.com/workout/delete/${id}`)
       .then((res) => {
         setAllWorkouts(
           allWorkouts.filter((workout) => {
